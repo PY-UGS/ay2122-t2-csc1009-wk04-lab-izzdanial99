@@ -1,16 +1,17 @@
 public class BMI{
 
   private double weight,height,weight_kg,height_cm;
+  private static final double POUND_TO_KG = 0.45359237;
+  private static final double INCHES_TO_CM = 0.0254;
+
   
     public BMI(double weight, double height) {
-        this.weight = weight;
-        this.height = height;
-        this.weight_kg = weight*0.45359237;
-        this.height_cm = height*0.0254;
+        this.weight = weight*POUND_TO_KG;
+        this.height = height*INCHES_TO_CM;
     }
 
     public double calculated_BMI(){
-        double calculated_BMI = this.weight_kg/(Math.pow(this.height_cm,2));
+        double calculated_BMI = this.weight/(Math.pow(this.height,2));
         return calculated_BMI;
     }
 
@@ -19,10 +20,10 @@ public class BMI{
         if(calculated_BMI < 18.5){
             return "Underweight";
         }
-        else if(calculated_BMI >= 18.5 && calculated_BMI<25){
+        else if(calculated_BMI<25){
             return("Normal");
         }
-        else if(calculated_BMI >= 25 && calculated_BMI<30){
+        else if(calculated_BMI<30){
             return("Overweight");
         }
         else if(calculated_BMI >= 30){
